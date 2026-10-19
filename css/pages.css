@@ -1,0 +1,302 @@
+:root {
+  --text-light: #2d3748;
+  --text-dark: #e2e8f0;
+  --card-light: #ffffff;
+  --card-dark: #2d3748;
+  --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  --radius: 12px;
+}
+
+body {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    line-height: 1.7;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === Header & Navigation === */
+header {
+    background: black;     
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+}
+
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600; /* bolder text = more visible */
+  padding: 0.75rem 1.5rem; /* bigger click area */
+  border-radius: 12px;
+  transition: all 0.3s ease; /* smooth ALL changes */
+  
+  /* Base subtle pop */
+  background: rgba(255, 255, 255, 0.1);;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hover — MAX pop effect */
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px) scale(1.08); /* lift + grow */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(255, 255, 255, 0.15), /* glow */
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+/* Active/click feedback */
+.nav-link:active {
+  transform: translateY(0) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.theme-btn {
+    background: grey;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.theme-btn:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* === Main Content === */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.genre-section {
+    margin-bottom: 4rem;
+}
+
+.genre-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+.genre-section p {
+    align-items: center;
+}
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+/* === Book Cards === */
+/* Make all cards same height & align content */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+  align-items: stretch; /* 👈 ALL cards same height */
+}
+
+.book-card {
+  background: rgb(39, 39, 39);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 1.5rem;
+  
+  /* 👇 Stack content vertically & push buttons down */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let description fill empty space evenly */
+.book-card p {
+  flex-grow: 1;
+  margin-bottom: 1.25rem;
+}
+
+.genre-tag {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    width: fit-content;
+}
+
+
+.read-btn {
+  background: black;
+  color: white;
+  border: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem; /* space between buttons */
+  margin-top: auto; /* 👈 PINS to bottom */
+  transition: all 0.2s ease;
+}
+
+.read-btn:hover {
+  background: gray;
+}
+
+.like-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 2px solid rgb(234, 57, 57);
+  background: transparent;
+  color: rgb(234, 57, 57);
+  cursor: pointer;
+}
+
+/* === Story Page === */
+.story-page {
+    max-width: 800px;
+}
+
+.story-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.story-cover {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.chapter-title {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    color: var(--primary);
+}
+
+.synopsis-hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.synopsis-visible {
+    max-height: 500px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(107, 70, 193, 0.1);
+    border-radius: 8px;
+}
+
+/* Theme Toggle Button — "Pop Out" Style */
+.theme-toggle {
+  /* Base size & spacing */
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius); /* matches your 12px variable */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* Colors — use your variables for consistency */
+  background-color: var(--accent); /* or a bright accent color */
+  color: white; /* contrast text */
+
+  /* SHADOW = the main "pop" effect */
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.25), /* deeper shadow */
+    0 2px 4px rgba(0, 0, 0, 0.15);  /* subtle layer */
+
+  /* Smooth transition for hover */
+  transition: all 0.25s ease;
+}
+
+/* Hover State — extra pop on mouseover */
+.theme-toggle:hover {
+  transform: translateY(-2px); /* lift up */
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active/Click State — press down feedback */
+.theme-toggle:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+/* === Reading Progress === */
+.reading-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#progressFill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+    transition: width 0.2s ease;
+}
+
+.story-content {
+    font-size: 1.1rem;
+}
+
+.story-content p {
+    margin-bottom: 1.5rem;
+    text-indent: 2rem;
+}
+
+.story-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin: 1.5rem 0;
+}
+
+.chapter-end {
+    text-align: center;
+    font-style: italic;
+    color: var(--primary);
+    margin-top: 2rem;
+}
+
+.story-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
